@@ -8,6 +8,7 @@ pipeline {
         CI = 'true'
         registry = "registry.gitlab.com/edisonpaul41/ms-greeting"
         registryCredential = 'Jenkins'
+        npm_config_cache='npm-cache'
     }
     stages{
         stage('Prepare') {
