@@ -1,8 +1,7 @@
-FROM node:10-alpine
+FROM node:10
 WORKDIR /app
-COPY ./package.json /app/package.json
+COPY . /app
 RUN npm install --silent
-COPY ./dist /app
-RUN ls
+RUN npm run compile
 EXPOSE 5000
-CMD node app.js
+CMD [ "node", "dist/app.js" ]
