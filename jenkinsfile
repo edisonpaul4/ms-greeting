@@ -18,37 +18,24 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                gitlabCommitStatus(connection: gitLabConnection('Jenkins'), name: 'install') {
-                    sh 'npm install && npm install typescript@3.5.2'
-                }
-                
+                sh 'npm install && npm install typescript@3.5.2' 
             }
         }
         stage('Unit Testing') {
             steps {
-                gitlabCommitStatus(connection: gitLabConnection('Jenkins'), name: 'test') {
                     sh 'npm run test'
-                }
                 
             }
         }
         stage('Compile') { 
             steps {
-                gitlabCommitStatus(connection: gitLabConnection('Jenkins'), name: 'compile') {
-                   sh 'npx tsc' 
-                }
-                
+                sh 'npx tsc' 
             }
         }
         stage('Create Docker Image') { 
             agent any
             steps {
-                gitlabCommitStatus(connection: gitLabConnection('Jenkins'), name: 'build') {
-                    script {
-                        docker.build registry
-                    } 
-                }
-                
+                docker.build registry 
             }
         }
 
