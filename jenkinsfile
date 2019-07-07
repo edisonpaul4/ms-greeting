@@ -35,7 +35,9 @@ pipeline {
         stage('Create Docker Image') { 
             agent any
             steps {
-                docker.build registry 
+                    script {
+                        docker.build registry
+                }
             }
         }
 
