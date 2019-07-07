@@ -41,7 +41,6 @@ pipeline {
             }
         }
         stage('Create Docker Image') { 
-            agent any
             steps {
                 gitlabCommitStatus(connection: gitLabConnection('Jenkins'), name: 'build') {
                     script {
