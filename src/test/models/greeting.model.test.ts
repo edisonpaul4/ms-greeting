@@ -20,6 +20,6 @@ describe('Greeting Response', () => {
             message: 'message',
             timeToLifeSec: 90,
         } as IGreetingRequestModel;
-        expect(response.getResponse(requestMockup).message).to.equal('aaa');
+        expect(response.getResponse(requestMockup).message).to.equal('ERROR');
     });
 });
